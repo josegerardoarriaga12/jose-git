@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sobre Nosotros - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_sn.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="sobre-nosotros">
+        <div class="container">
+            <h1>Sobre Nosotros</h1>
+            <h3>Crochet con Estilo y Pasión.</h3>
+
+            <p>
+                Coco_Crochet es una marca dedicada a la creación de productos tejidos a crochet,
+                con un enfoque en flores y personajes. Nuestros productos están hechos a mano con 
+                amor y cuidado, y estamos ubicados en Ciudad Valles, un bonito municipio del estado de
+                San Luis Potosí.
+            </p>
+
+            <img src="{% static 'img/fest.jpg' %}" class="about-image" alt="Coco_Crochet">
+
+            <p>
+                Nos especializamos en la creación de hermosas piezas hechas con la técnica del crochet, 
+                que van desde flores y accesorios hasta personajes y objetos decorativos. Nuestra pasión 
+                por el arte del tejido nos impulsa a crear productos únicos y personalizados para cada 
+                uno de nuestros clientes. Estamos ubicados en Ciudad Valles y nos enorgullece 
+                promover la artesanía local a través de nuestras creaciones. 
+            </p>
+
+            <h3>Nuestra Historia.</h3>
+
+            <p>
+                Coco_Crochet nació del amor por el arte y las manualidades. Desde muy joven, su fundadora descubrió 
+                la versatilidad del crochet para crear todo tipo de objetos y diseños. Con el tiempo, perfeccionó 
+                su técnica y decidió compartir sus creaciones con el mundo a través de su marca. Cada pieza está hecha 
+                con dedicación, buscando transmitir calidez y originalidad a los hogares de nuestros clientes.
+            </p>
+
+            <h3>Nuestra Misión.</h3>
+
+            <p>
+                Creemos que cada creación tejida es más que un producto; es una obra de arte, un
+                 regalo especial y un pedacito de dedicación. Nuestra misión es ofrecer piezas originales, con diseños 
+                 exclusivos, ideales para quienes valoran la autenticidad y el trabajo hecho a mano.
+            </p>
+        </div>
+    </section>
+{% endblock %}

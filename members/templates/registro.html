@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registro - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_Re.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="registro-container">
+        <div class="registro-card">
+            <h1>Únete a Coco_Crochet</h1>
+            <p>✨Forma parte de nuestra comunidad de amantes del crochet.✨</p>
+
+            {% if mensaje %}
+                <div style="color: green; font-weight: bold; margin-bottom: 10px;">
+                    {{ mensaje }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'registro' %}">
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                <p>
+                    <label for="id_nombre">Nombre:</label>
+                    {{ form.nombre }}
+                    {{ form.nombre.errors }}
+                </p>
+
+                <p>
+                    <label for="id_correo">Correo:</label>
+                    {{ form.correo }}
+                    {{ form.correo.errors }}
+                </p>
+
+                <p>
+                    <label for="id_contraseña">Contraseña:</label>
+                    {{ form.contraseña }}
+                    {{ form.contraseña.errors }}
+                </p>
+
+                <button type="submit">Registrarse</button>
+                <p><a href="{% url 'login' %}">Iniciar Sesión</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_ini.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h2>✨ Tejiendo arte en cada puntada ✨</h2>
+                <p>Bienvenidos a <span class="highlight">Coco_Crochet</span>, donde cada pieza es única y hecha con amor. 
+                   Dale un toque de originalidad y calidez a tu hogar con nuestras creaciones tejidas a mano🧶💖.</p>
+                <br>
+                <p>💬 ¿Quieres contactarnos o dejar tu opinión?</p>
+                <p>Accede a todos nuestros datos de contacto, 
+                obten dirección exacta, número y correo electrónico directo, 
+                participa en la sección de comentarios</p>
+                
+                <p><strong>El registro es rápido y completamente gratuito.</strong></p>
+                <a href="{% url 'registro' %}" class="btn">Registrarme</a>
+            </div>
+            <div class="hero-image">
+                <img id="heroImage" src="{% static 'img/est.jpeg' %}" alt="">
+            </div>          
+        </div>
+    </section>
+
+    <section id="sobnos">
+        <h2>Crochet con estilo y pasion.</h2>
+        <p>Coco_Crochet es una marca dedicada a la creacion de productos tejidos a crochet, con un enfoque en flores 
+            y personajes. Nuestros productos estan hechos a mano con amor y cuidado, y estamos ubicados en Ciudad Valles,
+            un bonito municipio del estado de San Luis Potosi. ¡Descubre la magia del crochet con Coco_Crochet!</p>
+            <div class="image-container">
+                <img src="{% static 'img/pas.jpg' %}" alt="Tejido 1">
+                <img src="{% static 'img/Os.jpg' %}" alt="Tejido 2">
+                <img src="{% static 'img/Cat.jpg' %}" alt="Tejido 3">
+            </div>
+        <div align="right">
+        <a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a>
+        </div>
+    </section>
+    
+    <section id="nuestrab">
+            <table border="1">
+                <tr>
+                    <td width="40%">
+                        <img src="{% static 'img/tor.jpg' %}" width="185">
+                        <img src="{% static 'img/cap.jpg' %}" width="170">
+                        <br>
+                        <img src="{% static 'img/mar.jpg' %}" width="185">
+                        <img src="{% static 'img/bol.jpg' %}" width="140">
+                    </td>
+                    <td width="60%">
+                        <h3>Crochet hecho con amor.</h3>
+                        <p>Coco_Crochet es un emprendimiento dedicado a la creacion de productos tejidos a mano con amor y dedicacion. 
+                        Nuestras especialidades don las flores, personajes y otros diseños unicos en crochet, perfectos para dar 
+                        un toque de original y colorido a tu hogar o como regalo especial. ¡Te invitamos a explorar nuestro mundo 
+                        de tejidos!</p>
+                        <div align="right">
+                            <a href="{% url 'nuestro_trabajo' %}">Nuestro Trabajo</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+    </section>
+
+    <section id="presentacion">
+        <div class="contenido">
+            <h3>Tejiendo con Pasión.</h3>
+            <p>Bienvenidos a <strong>Coco_Crochet</strong>, donde encontrarás una variedad de productos tejidos a crochet con amor y dedicación.  
+                Nuestra galería de fotos muestra nuestro trabajo artesanal en detalle, permitiéndote apreciar la calidad y creatividad  
+                en cada uno de nuestros productos.  
+                <br><br>✨ ¡Disfruta de la belleza del crochet y haz tu pedido hoy mismo! ✨
+            </p>
+            <div class="galeria">
+                <img src="{% static 'img/mtup.jpg' %}" alt="Producto 1">
+                <img src="{% static 'img/cac.jpg' %}" alt="Producto 2">
+                <img src="{% static 'img/marg.jpg' %}" alt="Producto 3">
+                <img src="{% static 'img/miz.jpg' %}" alt="Producto 4">
+            </div>
+        </div>
+    </section>
+
+        <section id="faq" class="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h4>🧶 ¿Es necesario estar registrado para hacer pedidos y compras?</h4>
+                <p>Sí, en <strong>Coco_Crochet</strong> necesitamos que te registres a la comunidad para poder brindarte un mejor servicio, de manera mas directa y personalizada.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>📦 ¿Realizan envíos fuera de Ciudad Valles?</h4>
+                <p>Sí, realizamos envíos a todo México. Los costos de envío varían según la ubicación y el tamaño del pedido.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>💳 ¿Qué métodos de pago aceptan?</h4>
+                <p>Aceptamos pagos por transferencia bancaria, depósito en OXXO y plataformas digitales como MercadoPago.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>⏳ ¿Cuánto tardan los pedidos en realizarse?</h4>
+                <p>El tiempo de elaboración depende del tipo de producto. Generalmente, entre 3 a 10 días hábiles después de confirmar tu pedido.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>🔁 ¿Puedo devolver o cambiar un producto?</h4>
+                <p>Solo se aceptan cambios si el producto llega dañado o con defectos de fábrica. Cada pieza está hecha a mano, por lo que pueden existir pequeñas variaciones.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Pasar las rutas estáticas al JavaScript
+    const staticImages = [
+        "{% static 'img/est.jpeg' %}",
+        "{% static 'img/colo.jpeg' %}",
+        "{% static 'img/cora.jpeg' %}",
+        "{% static 'img/lib.jpeg' %}",
+        "{% static 'img/man.jpeg' %}",
+        "{% static 'img/coj.jpeg' %}",
+        "{% static 'img/ram.jpeg' %}"
+    ];
+</script>
+<script src="{% static 'js/Ind.js' %}"></script>
+{% endblock %}

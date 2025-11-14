@@ -1,0 +1,604 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Coco_Crochet{% endblock %}</title>
+
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/estilos_sn.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_NT.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_P.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_Cui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_Tuto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_Com.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos_Con.css' %}">
+
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/estilos_ini.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'img/LOGO COCO.png' %}" alt="logo" width="50">
+        <h1>Coco_Crochet</h1>
+       
+        <nav>
+            <ul>
+                <!-- MENÚ PARA TODOS LOS USUARIOS -->
+                <li><a href="{% url 'index' %}"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
+                <li><a href="{% url 'sobre_nosotros' %}"><i class="fa-solid fa-building"></i><span>Sobre Nosotros</span></a></li>
+                <li><a href="{% url 'nuestro_trabajo' %}"><i class="fa-solid fa-palette"></i><span>Nuestro Trabajo</span></a></li>
+                <li><a href="{% url 'precios' %}"><i class="fa-solid fa-dollar-sign"></i><span>Precios</span></a></li>
+                <li><a href="{% url 'cuidados' %}"><i class="fa-solid fa-soap"></i><span>Cuidados</span></a></li>
+
+                <!-- SOLO PARA USUARIOS REGISTRADOS -->
+                {% if request.session.usuario_id %}
+                    <li><a href="{% url 'tutoriales' %}"><i class="fa-solid fa-video"></i><span>Tutoriales</span></a></li>
+                    <li><a href="{% url 'contacto' %}"><i class="fa-solid fa-phone"></i><span>Contacto</span></a></li>
+                    <li><a href="{% url 'comentarios' %}"><i class="fa-solid fa-comment"></i><span>Comentarios</span></a></li>
+                {% endif %}
+
+                <!-- PERFIL O CERRAR SESIÓN -->
+                {% if request.session.usuario_id %}
+                    <li><a href="{% url 'bienvenida' %}"><i class="fa-solid fa-right-from-bracket"></i><span>Perfil</span></a></li>
+                {% else %}
+                    <li><a href="{% url 'registro' %}"><i class="fa-solid fa-circle-user"></i><span>Registro</span></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- AQUÍ VA EL CONTENIDO ESPECÍFICO DE CADA PÁGINA -->
+          <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h2>✨ Tejiendo arte en cada puntada ✨</h2>
+                <p>Bienvenidos a <span class="highlight">Coco_Crochet</span>, donde cada pieza es única y hecha con amor. 
+                   Dale un toque de originalidad y calidez a tu hogar con nuestras creaciones tejidas a mano🧶💖.</p>
+                <br>
+                <p>💬 ¿Quieres contactarnos o dejar tu opinión?</p>
+                <p>Accede a todos nuestros datos de contacto, 
+                obten dirección exacta, número y correo electrónico directo, 
+                participa en la sección de comentarios</p>
+                
+                <p><strong>El registro es rápido y completamente gratuito.</strong></p>
+                <a href="{% url 'registro' %}" class="btn">Registrarme</a>
+            </div>
+            <div class="hero-image">
+                <img id="heroImage" src="{% static 'img/est.jpeg' %}" alt="">
+            </div>          
+        </div>
+    </section>
+
+    <section id="sobnos">
+        <h2>Crochet con estilo y pasion.</h2>
+        <p>Coco_Crochet es una marca dedicada a la creacion de productos tejidos a crochet, con un enfoque en flores 
+            y personajes. Nuestros productos estan hechos a mano con amor y cuidado, y estamos ubicados en Ciudad Valles,
+            un bonito municipio del estado de San Luis Potosi. ¡Descubre la magia del crochet con Coco_Crochet!</p>
+            <div class="image-container">
+                <img src="{% static 'img/pas.jpg' %}" alt="Tejido 1">
+                <img src="{% static 'img/Os.jpg' %}" alt="Tejido 2">
+                <img src="{% static 'img/Cat.jpg' %}" alt="Tejido 3">
+            </div>
+        <div align="right">
+        <a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a>
+        </div>
+    </section>
+    
+    <section id="nuestrab">
+            <table border="1">
+                <tr>
+                    <td width="40%">
+                        <img src="{% static 'img/tor.jpg' %}" width="185">
+                        <img src="{% static 'img/cap.jpg' %}" width="170">
+                        <br>
+                        <img src="{% static 'img/mar.jpg' %}" width="185">
+                        <img src="{% static 'img/bol.jpg' %}" width="140">
+                    </td>
+                    <td width="60%">
+                        <h3>Crochet hecho con amor.</h3>
+                        <p>Coco_Crochet es un emprendimiento dedicado a la creacion de productos tejidos a mano con amor y dedicacion. 
+                        Nuestras especialidades don las flores, personajes y otros diseños unicos en crochet, perfectos para dar 
+                        un toque de original y colorido a tu hogar o como regalo especial. ¡Te invitamos a explorar nuestro mundo 
+                        de tejidos!</p>
+                        <div align="right">
+                            <a href="{% url 'nuestro_trabajo' %}">Nuestro Trabajo</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+    </section>
+
+    <section id="presentacion">
+        <div class="contenido">
+            <h3>Tejiendo con Pasión.</h3>
+            <p>Bienvenidos a <strong>Coco_Crochet</strong>, donde encontrarás una variedad de productos tejidos a crochet con amor y dedicación.  
+                Nuestra galería de fotos muestra nuestro trabajo artesanal en detalle, permitiéndote apreciar la calidad y creatividad  
+                en cada uno de nuestros productos.  
+                <br><br>✨ ¡Disfruta de la belleza del crochet y haz tu pedido hoy mismo! ✨
+            </p>
+            <div class="galeria">
+                <img src="{% static 'img/mtup.jpg' %}" alt="Producto 1">
+                <img src="{% static 'img/cac.jpg' %}" alt="Producto 2">
+                <img src="{% static 'img/marg.jpg' %}" alt="Producto 3">
+                <img src="{% static 'img/miz.jpg' %}" alt="Producto 4">
+            </div>
+        </div>
+    </section>
+
+        <section class="sobre-nosotros">
+        <div class="container">
+            <h1>Sobre Nosotros</h1>
+            <h3>Crochet con Estilo y Pasión.</h3>
+
+            <p>
+                Coco_Crochet es una marca dedicada a la creación de productos tejidos a crochet,
+                con un enfoque en flores y personajes. Nuestros productos están hechos a mano con 
+                amor y cuidado, y estamos ubicados en Ciudad Valles, un bonito municipio del estado de
+                San Luis Potosí.
+            </p>
+
+            <img src="{% static 'img/fest.jpg' %}" class="about-image" alt="Coco_Crochet">
+
+            <p>
+                Nos especializamos en la creación de hermosas piezas hechas con la técnica del crochet, 
+                que van desde flores y accesorios hasta personajes y objetos decorativos. Nuestra pasión 
+                por el arte del tejido nos impulsa a crear productos únicos y personalizados para cada 
+                uno de nuestros clientes. Estamos ubicados en Ciudad Valles y nos enorgullece 
+                promover la artesanía local a través de nuestras creaciones. 
+            </p>
+
+            <h3>Nuestra Historia.</h3>
+
+            <p>
+                Coco_Crochet nació del amor por el arte y las manualidades. Desde muy joven, su fundadora descubrió 
+                la versatilidad del crochet para crear todo tipo de objetos y diseños. Con el tiempo, perfeccionó 
+                su técnica y decidió compartir sus creaciones con el mundo a través de su marca. Cada pieza está hecha 
+                con dedicación, buscando transmitir calidez y originalidad a los hogares de nuestros clientes.
+            </p>
+
+            <h3>Nuestra Misión.</h3>
+
+            <p>
+                Creemos que cada creación tejida es más que un producto; es una obra de arte, un
+                 regalo especial y un pedacito de dedicación. Nuestra misión es ofrecer piezas originales, con diseños 
+                 exclusivos, ideales para quienes valoran la autenticidad y el trabajo hecho a mano.
+            </p>
+        </div>
+    </section>
+
+        <section class="nuestro-trabajo">
+        <div class="container">
+            <h1>Nuestro Trabajo</h1>
+            <p>
+                Coco_Crochet es un emprendimiento dedicado a la creación de productos tejidos a mano con
+                amor y dedicación. Nuestras especialidades son las flores, personajes y otros diseños
+                únicos en crochet, perfectos para dar un toque original y colorido a tu hogar o como regalo special.
+                ¡Te invitamos a explorar nuestro mundo de tejidos!
+            </p>
+        </div>
+    </section>
+
+    <section class="productos">
+        <center>
+            <table border="1" width="100%">
+                <tr>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/marg.jpg' %}" width="150" alt="Flores Tejidas">
+                        <br>
+                        <h4>Flores Tejidas</h4>
+                        <p>Las flores tejidas son una hermosa y creativa forma de decorar cualquier espacio.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/ros.jpg' %}" width="150" alt="Accesorios de Moda">
+                        <br>
+                        <h4>Accesorios de Moda</h4>
+                        <p>Los accesorios de moda son la clave para completar cualquier look y darle un toque unico 
+                            y personalizado.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/pol.jpg' %}" width="150" alt="Amigurumis Personalizados">
+                        <br>
+                        <h4>Amigurumis Personalizados</h4>
+                        <p>"Los amigurumis personalizados son una hermosa forma de demostrar cariño y amistad, ya que 
+                            cada uno esta hecho con amor y dedicacion para representar a la persona especial a quien
+                            sera entregado".</p>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+        <center>
+            <table border="1" width="100%">
+                <tr>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/cap.jpg' %}" width="150" alt="Adornos para el Hogar">
+                        <br>
+                        <h4>Adornos para el Hogar</h4>
+                        <p>Los adornos para el hogar le dan un toque de personalidad y calidez a cada rincon de mi
+                            casa.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/tan.jpg' %}" width="150" alt="Personajes de Peliculas">
+                        <br>
+                        <h4>Personajes de Películas</h4>
+                        <p>Los personajes de películas tienen la capacidad de transportarnos a mundos imaginarios 
+                            y hacernos vivir emociones intensas con sus historias.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/cob.jpg' %}" width="150" alt="Articulos Decorativos">
+                        <br>
+                        <h4>Artículos Decorativos</h4>
+                        <p>Los artículos decorativos le dan un toque especial y personalizado a mi hogar, haciendo que se 
+                            sienta acogedor y unico.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </section>
+
+    <section class="valor-artesania">
+        <div class="container">
+            <h3>El valor de lo hecho a mano</h3>
+            <p>
+                En cada creación hay una historia tejida con paciencia, amor y dedicación. 
+                Lo hecho a mano tiene un alma especial, y en <strong>Coco_Crochet</strong>, 
+                queremos compartir esa esencia contigo.
+            </p>
+            <p class="mensaje">
+                📩 ¿Tienes una idea en mente? Escríbenos y trabajemos juntos para hacerla realidad. 
+                ¡Tejeremos algo hermoso para ti!
+            </p>
+            
+            <p><em>¡Únete a nuestra comunidad!. Crea una cuenta con nosotros para acceder
+                 a toda nuestra información completa.</em></p>
+            <p><strong>Registro rápido y sin costo.</strong></p>
+                <a href="{% url 'registro' %}" class="btn">Registrarme</a>
+        </div>
+    </section>
+
+        <section class="lista-precios">
+        <div class="container">
+            <h1>Lista de Precios</h1>
+            <p>
+                ¡Bienvenidos a <strong>Coco_Crochet</strong>, donde encontrarás productos únicos y hechos a mano con amor! 
+                Nos especializamos en la creación de artículos tejidos a crochet, desde delicadas flores hasta encantadores personajes, 
+                todos elaborados con la más alta calidad y atención al detalle.
+            </p>
+            <p>
+                Nuestros precios varían según el tamaño y la complejidad de cada pieza, 
+                pero siempre garantizamos tarifas justas y accesibles. 
+                ¡Explora nuestra colección y encuentra el detalle perfecto para ti o para regalar!
+            </p>
+        </div>
+    </section>
+
+    <section class="precios">
+        <div class="container">
+            <p class="descripcion">
+                <strong>“Económico”</strong> incluye productos tejidos de menor tamaño y complejidad, 
+                ideales como accesorios o detalles decorativos.
+            </p>
+    
+            <div class="tabla-precios">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flores</td>
+                            <td>$100.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes</td>
+                            <td>$200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Amigurumis</td>
+                            <td>$150.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bolsos</td>
+                            <td>$150.00</td>
+                        </tr>
+                        <tr>
+                            <td>Collares</td>
+                            <td>$80.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bufandas</td>
+                            <td>$60.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mantas</td>
+                            <td>$1000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes Grandes</td>
+                            <td>$900.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="precios premium">
+        <div class="container">
+            <p class="descripcion">
+                <strong>“Premium”</strong> abarca piezas más elaboradas, con mayor detalle y tamaño, 
+                ideales como regalos o piezas de colección.
+            </p>
+    
+            <div class="tabla-precios">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flores</td>
+                            <td>$150.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes</td>
+                            <td>$250.00</td>
+                        </tr>
+                        <tr>
+                            <td>Amigurumis</td>
+                            <td>$200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bolsos</td>
+                            <td>$250.00</td>
+                        </tr>
+                        <tr>
+                            <td>Collares</td>
+                            <td>$140.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bufandas</td>
+                            <td>$120.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mantas</td>
+                            <td>$2500.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes Grandes</td>
+                            <td>$1900.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+        <section class="product-care">
+        <h1>Cuidados del Producto</h1>
+
+        <div class="cards-container">
+            <div class="care-card">
+                <div class="icon">🧼</div>
+                <h2>Limpieza</h2>
+                <p>Lava a mano con agua fría y jabón neutro. Evita la lavadora para no dañar los hilos.</p>
+            </div>
+            <div class="care-card">
+                <div class="icon">☀️</div>
+                <h2>Secado</h2>
+                <p>Seca al aire libre, preferiblemente a la sombra. No uses secadora ni plancha.</p>
+            </div>
+            <div class="care-card">
+                <div class="icon">📦</div>
+                <h2>Almacenamiento</h2>
+                <p>No retuerzas ni exprimas el producto. Guarda en lugar fresco y seco para mantener su forma.</p>
+            </div>
+            <div class="care-card">
+                <div class="icon">🛡️</div>
+                <h2>Protección</h2>
+                <p>Evita exposición prolongada al sol y supervisa su uso si tiene piezas pequeñas.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZNPIeYfLv5E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_A1tljptNbA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RbbVwAbq9gk" title="Cómo lavo mis amigurumis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+        <section class="product-care">
+        <h1>Tutoriales</h1>
+        <h6>Empieza tu viaje en el mundo del crochet con nuestros tutoriales en video. 
+            ¡Manos a la obra y deja volar tu creatividad!</h6>
+
+        <div class="cards-container">
+            <div class="video-card">
+                <h2>Tulipanes</h2>
+                <iframe src="https://www.youtube.com/embed/GJz5RZ2U2OE" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Girasoles</h2>
+                <iframe src="https://www.youtube.com/embed/xEaNo_NXa2I" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Lavanda</h2>
+                <iframe src="https://www.youtube.com/embed/e-tWUf1zlr4" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="video-card">
+                <h2>Panda</h2>
+                <iframe src="https://www.youtube.com/embed/GDZewhCUOGQ" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Pingüino</h2>
+                <iframe src="https://www.youtube.com/embed/23u5cN9xiyE" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Ballena</h2>
+                <iframe src="https://www.youtube.com/embed/EYnF3y1TGKY" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="video-card">
+                <h2>Shrek</h2>
+                <iframe src="https://www.youtube.com/embed/lJhHjwU0ANY" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Stitch</h2>
+                <iframe src="https://www.youtube.com/embed/cqzz5VNU1q8" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Hello Kitty</h2>
+                <iframe src="https://www.youtube.com/embed/a8OZC8EPTao" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="video-card">
+                <h2>Kuromi</h2>
+                <iframe src="https://www.youtube.com/embed/HsJImZpASx4" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Caroline</h2>
+                <iframe src="https://www.youtube.com/embed/04lyASO3-q4" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Lilo</h2>
+                <iframe src="https://www.youtube.com/embed/iXMz_JuLW08" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="video-card">
+                <h2>Rapunzel</h2>
+                <iframe src="https://www.youtube.com/embed/PdPFSC5zkDY" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>La Sirenita</h2>
+                <iframe src="https://www.youtube.com/embed/ohNEG5BYWUU" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Cenicienta</h2>
+                <iframe src="https://www.youtube.com/embed/i5clgzF8AYE" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="video-card">
+                <h2>Llavero de Fresa</h2>
+                <iframe src="https://www.youtube.com/embed/dKp7Taht4ec" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Llavero de Cereza</h2>
+                <iframe src="https://www.youtube.com/embed/oobPbaXK4zI" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <h2>Llavero de Sandía</h2>
+                <iframe src="https://www.youtube.com/embed/rfaNTXI7zv0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+        <section class="comentarios">
+        <div class="container">
+            <h1>Comentarios</h1>
+            <h5>¡Exprésate, estamos escuchando!</h5>
+
+            <div class="comments-list" id="comments-list"></div>
+            <form id="comment-form">
+                <input type="text" id="author" placeholder="Nombre" required>
+                <textarea id="comment" rows="4" placeholder="Escribe tu comentario..." required></textarea>
+                <button type="submit" class="submit-btn">Publicar</button>
+            </form>
+        </div>
+    </section>
+
+        <div class="contacto">
+        <div class="container">
+            <h1>Contáctanos</h1>
+            <p>✨ ¿Tienes una consulta o quieres un pedido personalizado? ¡Nos encantará escucharte! ✨</p>
+        </div>
+    </div>
+    
+    <section class="contacto">
+        <div class="contact-container">
+            <div class="contact-card">
+                <h3><i class="fas fa-phone-alt"></i> Teléfono</h3>
+                <p><a href="tel:+524811443355">(+52) 481-144-3355</a></p>
+            </div>
+    
+            <div class="contact-card">
+                <h3><i class="fas fa-envelope"></i> Correo</h3>
+                <p><a href="mailto:manegonzalez385@gmail.com">manegonzalez385@gmail.com</a></p>
+            </div>
+        </div>
+    
+        <div class="mapa">
+            <h3>📍 Nuestra Ubicación</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9862271125254!2d-98.987429!3d22.222913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjIgMTMnMjcuNCJOIDk4IDU5JyEwNS41Ilc!5e0!3m2!1ses!2smx!4v1617955268283!5m2!1ses!2smx"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+    
+            <br><br>
+            <a href="https://www.google.com/maps?q=22.222913,-98.987429" target="_blank">
+                📍 Abrir en Google Maps
+            </a>
+        </div>
+    </section>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section social">
+                <h4>Síguenos en nuestras redes</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100089165477537" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/crochet_gcj" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/mstfyhmzh10" target="_blank"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.youtube.com/@monuastuff" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/es-419/" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2025 Coco_Crochet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

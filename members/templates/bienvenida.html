@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida - Coco Crochet</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos_Re.css' %}">
+
+</head>
+<body>
+    <header>
+        <img src="{% static 'img/LOGO COCO.png' %}" alt="logo" width="50">
+        <h1>Coco_Crochet</h1>
+       
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
+                <li><a href="{% url 'sobre_nosotros' %}"><i class="fa-solid fa-building"></i><span>Sobre Nosotros</span></a></li>
+                <li><a href="{% url 'nuestro_trabajo' %}"><i class="fa-solid fa-palette"></i><span>Nuestro Trabajo</span></a></li>
+                <li><a href="{% url 'precios' %}"><i class="fa-solid fa-dollar-sign"></i><span>Precios</span></a></li>
+                <li><a href="{% url 'cuidados' %}"><i class="fa-solid fa-soap"></i><span>Cuidados</span></a></li>
+                <li><a href="{% url 'tutoriales' %}"><i class="fa-solid fa-video"></i><span>Tutoriales</span></a></li>
+                <li><a href="{% url 'contacto' %}"><i class="fa-solid fa-phone"></i><span>Contacto</span></a></li>
+                <li><a href="{% url 'comentarios' %}"><i class="fa-solid fa-comment"></i><span>Comentarios</span></a></li>
+                <li><a href="{% url 'registro' %}"><i class="fa-solid fa-circle-user"></i><span>Perfil</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+        <div class="welcome-header">
+            <div class="welcome-avatar">
+            </div>
+            
+            <h1>¡Hola {{ usuario.nombre }}! <span class="crochet-icon"></span></h1>
+            <p>Bienvenido a tu espacio creativo</p>
+            
+            <div class="membership-badge">
+                <i class="fas fa-heart"></i> Miembro de Coco Crochet
+            </div>
+        </div>
+                    
+            <div class="welcome-content">
+                <p class="welcome-quote">
+                    "Cada puntada cuenta, ¡crea algo hermoso hoy!"
+                    Déjate inspirar por la creatividad que compartimos en cada puntada.
+                    Conoce lo que hacemos y acompáñanos en nuestra pasión por el crochet.
+                </p>
+                
+                
+                <div class="welcome-actions">
+                    <a href="{% url 'index' %}" class="welcome-btn btn-primary">
+                        <i class="fa-solid fa-house"></i>
+                        Regresar a Inicio
+                    </a>
+                    
+                    <a href="{% url 'contacto' %}" class="welcome-btn btn-secondary">
+                        <i class="fa-solid fa-phone"></i>
+                        Ir a Contacto
+                    </a>
+                    
+                    <a href="{% url 'logout' %}" class="welcome-btn" style="background: #f8f9fa; color: #666;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="personal-notes">
+    <div class="notes-header">
+        <h3><i class="fas fa-clipboard-list"></i> Mis Notas de Patrones</h3>
+        <p>Guarda tus modificaciones y tips personalizados</p>
+    </div>
+    
+    <!-- Mostrar mensajes de éxito/error -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <form method="POST" class="note-creator">
+        {% csrf_token %}
+        
+        <!-- Usar el formulario de Django en lugar de inputs manuales -->
+        <div class="input-group">
+            <label for="id_titulo"><i class="fas fa-heading"></i> Título de la nota</label>
+            {{ form.titulo }}
+        </div>
+
+        <div class="input-group">
+            <label for="id_contenido"><i class="fas fa-edit"></i> Contenido</label>
+            {{ form.contenido }}
+        </div>
+
+        <button type="submit" class="save-note-btn">
+            <i class="fas fa-save"></i> Guardar Nota
+        </button>
+    </form>
+
+    <div class="notes-list">
+        <h4>Tus notas guardadas</h4>
+        <div class="notes-grid">
+            {% if notas %}
+                {% for nota in notas %}
+                    <div class="note-item">
+                        <h5>{{ nota.titulo }}</h5>
+                        <p>{{ nota.contenido }}</p>
+                        <small>Creada: {{ nota.fecha_creacion|date:"d/m/Y H:i" }}</small>
+                        {% if nota.fecha_actualizacion != nota.fecha_creacion %}
+                        <small>Editada: {{ nota.fecha_actualizacion|date:"d/m/Y H:i" }}</small>
+                        {% endif %}
+                        <form method="POST" action="{% url 'eliminar_nota' nota.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-btn" onclick="return confirm('¿Estás seguro de que quieres eliminar esta nota?')">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <i class="fas fa-sticky-note"></i>
+                    <p>Aún no tienes notas guardadas</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section social">
+                <h4>Síguenos en nuestras redes</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100089165477537" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/crochet_gcj" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/mstfyhmzh10" target="_blank"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.youtube.com/@monuastuff" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Coco_Crochet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

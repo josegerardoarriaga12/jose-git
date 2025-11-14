@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Precios - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_P.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="lista-precios">
+        <div class="container">
+            <h1>Lista de Precios</h1>
+            <p>
+                ¡Bienvenidos a <strong>Coco_Crochet</strong>, donde encontrarás productos únicos y hechos a mano con amor! 
+                Nos especializamos en la creación de artículos tejidos a crochet, desde delicadas flores hasta encantadores personajes, 
+                todos elaborados con la más alta calidad y atención al detalle.
+            </p>
+            <p>
+                Nuestros precios varían según el tamaño y la complejidad de cada pieza, 
+                pero siempre garantizamos tarifas justas y accesibles. 
+                ¡Explora nuestra colección y encuentra el detalle perfecto para ti o para regalar!
+            </p>
+        </div>
+    </section>
+
+    <section class="precios">
+        <div class="container">
+            <p class="descripcion">
+                <strong>“Económico”</strong> incluye productos tejidos de menor tamaño y complejidad, 
+                ideales como accesorios o detalles decorativos.
+            </p>
+    
+            <div class="tabla-precios">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flores</td>
+                            <td>$100.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes</td>
+                            <td>$200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Amigurumis</td>
+                            <td>$150.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bolsos</td>
+                            <td>$150.00</td>
+                        </tr>
+                        <tr>
+                            <td>Collares</td>
+                            <td>$80.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bufandas</td>
+                            <td>$60.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mantas</td>
+                            <td>$1000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes Grandes</td>
+                            <td>$900.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="precios premium">
+        <div class="container">
+            <p class="descripcion">
+                <strong>“Premium”</strong> abarca piezas más elaboradas, con mayor detalle y tamaño, 
+                ideales como regalos o piezas de colección.
+            </p>
+    
+            <div class="tabla-precios">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flores</td>
+                            <td>$150.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes</td>
+                            <td>$250.00</td>
+                        </tr>
+                        <tr>
+                            <td>Amigurumis</td>
+                            <td>$200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bolsos</td>
+                            <td>$250.00</td>
+                        </tr>
+                        <tr>
+                            <td>Collares</td>
+                            <td>$140.00</td>
+                        </tr>
+                        <tr>
+                            <td>Bufandas</td>
+                            <td>$120.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mantas</td>
+                            <td>$2500.00</td>
+                        </tr>
+                        <tr>
+                            <td>Personajes Grandes</td>
+                            <td>$1900.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/Pre-.js' %}"></script>
+{% endblock %}

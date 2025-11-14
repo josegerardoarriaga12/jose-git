@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nuestro Trabajo - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_NT.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="nuestro-trabajo">
+        <div class="container">
+            <h1>Nuestro Trabajo</h1>
+            <p>
+                Coco_Crochet es un emprendimiento dedicado a la creación de productos tejidos a mano con
+                amor y dedicación. Nuestras especialidades son las flores, personajes y otros diseños
+                únicos en crochet, perfectos para dar un toque original y colorido a tu hogar o como regalo especial.
+                ¡Te invitamos a explorar nuestro mundo de tejidos!
+            </p>
+        </div>
+    </section>
+
+    <section class="productos">
+        <center>
+            <table border="1" width="100%">
+                <tr>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/marg.jpg' %}" width="150" alt="Flores Tejidas">
+                        <br>
+                        <h4>Flores Tejidas</h4>
+                        <p>Las flores tejidas son una hermosa y creativa forma de decorar cualquier espacio.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/ros.jpg' %}" width="150" alt="Accesorios de Moda">
+                        <br>
+                        <h4>Accesorios de Moda</h4>
+                        <p>Los accesorios de moda son la clave para completar cualquier look y darle un toque unico 
+                            y personalizado.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/pol.jpg' %}" width="150" alt="Amigurumis Personalizados">
+                        <br>
+                        <h4>Amigurumis Personalizados</h4>
+                        <p>"Los amigurumis personalizados son una hermosa forma de demostrar cariño y amistad, ya que 
+                            cada uno esta hecho con amor y dedicacion para representar a la persona especial a quien
+                            sera entregado".</p>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+        <center>
+            <table border="1" width="100%">
+                <tr>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/cap.jpg' %}" width="150" alt="Adornos para el Hogar">
+                        <br>
+                        <h4>Adornos para el Hogar</h4>
+                        <p>Los adornos para el hogar le dan un toque de personalidad y calidez a cada rincon de mi
+                            casa.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/tan.jpg' %}" width="150" alt="Personajes de Peliculas">
+                        <br>
+                        <h4>Personajes de Películas</h4>
+                        <p>Los personajes de películas tienen la capacidad de transportarnos a mundos imaginarios 
+                            y hacernos vivir emociones intensas con sus historias.</p>
+                    </td>
+                    <td align="center" width="33%">
+                        <img src="{% static 'img/cob.jpg' %}" width="150" alt="Articulos Decorativos">
+                        <br>
+                        <h4>Artículos Decorativos</h4>
+                        <p>Los artículos decorativos le dan un toque especial y personalizado a mi hogar, haciendo que se 
+                            sienta acogedor y unico.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </section>
+
+    <section class="valor-artesania">
+        <div class="container">
+            <h3>El valor de lo hecho a mano</h3>
+            <p>
+                En cada creación hay una historia tejida con paciencia, amor y dedicación. 
+                Lo hecho a mano tiene un alma especial, y en <strong>Coco_Crochet</strong>, 
+                queremos compartir esa esencia contigo.
+            </p>
+            <p class="mensaje">
+                📩 ¿Tienes una idea en mente? Escríbenos y trabajemos juntos para hacerla realidad. 
+                ¡Tejeremos algo hermoso para ti!
+            </p>
+            
+            <p><em>¡Únete a nuestra comunidad!. Crea una cuenta con nosotros para acceder
+                 a toda nuestra información completa.</em></p>
+            <p><strong>Registro rápido y sin costo.</strong></p>
+                <a href="{% url 'registro' %}" class="btn">Registrarme</a>
+        </div>
+    </section>
+{% endblock %}

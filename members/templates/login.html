@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio de Sesión - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_Re.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="registro-container">
+        <div class="registro-card">
+            <h1>Iniciar Sesión</h1>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Entrar</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+            <p><a href="{% url 'reset_password' %}">¿Olvidaste tu contraseña?</a></p>
+        </div>
+    </div>
+{% endblock %}

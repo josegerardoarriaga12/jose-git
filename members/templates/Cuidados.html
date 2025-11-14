@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cuidados del Crochet - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_Cui.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="product-care">
+        <h1>Cuidados del Producto</h1>
+
+        <div class="cards-container">
+            <div class="care-card">
+                <div class="icon">🧼</div>
+                <h2>Limpieza</h2>
+                <p>Lava a mano con agua fría y jabón neutro. Evita la lavadora para no dañar los hilos.</p>
+            </div>
+            <div class="care-card">
+                <div class="icon">☀️</div>
+                <h2>Secado</h2>
+                <p>Seca al aire libre, preferiblemente a la sombra. No uses secadora ni plancha.</p>
+            </div>
+            <div class="care-card">
+                <div class="icon">📦</div>
+                <h2>Almacenamiento</h2>
+                <p>No retuerzas ni exprimas el producto. Guarda en lugar fresco y seco para mantener su forma.</p>
+            </div>
+            <div class="care-card">
+                <div class="icon">🛡️</div>
+                <h2>Protección</h2>
+                <p>Evita exposición prolongada al sol y supervisa su uso si tiene piezas pequeñas.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZNPIeYfLv5E?si=TQq902TbnGl20jFt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_A1tljptNbA?si=P_5lc1_XUa7qTeQu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RbbVwAbq9gk?si=blsbJYIJx9AvCijC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+{% endblock %}

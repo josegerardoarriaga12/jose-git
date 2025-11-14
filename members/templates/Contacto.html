@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contacto - Coco_Crochet{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_Con.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="contacto">
+        <div class="container">
+            <h1>Contáctanos</h1>
+            <p>✨ ¿Tienes una consulta o quieres un pedido personalizado? ¡Nos encantará escucharte! ✨</p>
+        </div>
+    </div>
+    
+    <section class="contacto">
+        <div class="contact-container">
+            <div class="contact-card">
+                <h3><i class="fas fa-phone-alt"></i> Teléfono</h3>
+                <p><a href="tel:+524811443355">(+52) 481-144-3355</a></p>
+            </div>
+    
+            <div class="contact-card">
+                <h3><i class="fas fa-envelope"></i> Correo</h3>
+                <p><a href="mailto:manegonzalez385@gmail.com">manegonzalez385@gmail.com</a></p>
+            </div>
+        </div>
+    
+        <div class="mapa">
+            <h3>📍 Nuestra Ubicación</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9862271125254!2d-98.987429!3d22.222913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjIgMTMnMjcuNCJOIDk4IDU5JyEwNS41Ilc!5e0!3m2!1ses!2smx!4v1617955268283!5m2!1ses!2smx"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+    
+            <br><br>
+            <a href="https://www.google.com/maps?q=22.222913,-98.987429" target="_blank">
+                📍 Abrir en Google Maps
+            </a>
+        </div>
+    </section>
+
+<section class="consultas-crochet">
+    <h3>¿Tienes Dudas sobre Crochet?</h3>
+    <p class="subtitulo-consultas">Recibe ayuda personalizada con tus proyectos</p>
+    
+    <!-- Mostrar mensajes -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if usuario %}
+    <form method="POST" action="{% url 'enviar_consulta' %}" class="form-consulta">
+        {% csrf_token %}
+        
+        <!-- Campo de correo -->
+        <div class="campo-consulta">
+            <label for="id_correo">Correo para respuesta:</label>
+            {{ form.correo }}
+            {% if form.correo.errors %}
+            <div class="error">{{ form.correo.errors }}</div>
+            {% endif %}
+            <small class="texto-ayuda">Te enviaremos la respuesta a este correo</small>
+        </div>
+        
+        <div class="campo-consulta">
+            <label for="id_tipo_consulta">Tipo de consulta:</label>
+            {{ form.tipo_consulta }}
+            {% if form.tipo_consulta.errors %}
+            <div class="error">{{ form.tipo_consulta.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="campo-consulta">
+            <label for="id_nivel">Tu nivel en crochet:</label>
+            {{ form.nivel }}
+            {% if form.nivel.errors %}
+            <div class="error">{{ form.nivel.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="campo-consulta">
+            <label for="id_proyecto">Proyecto o técnica específica:</label>
+            {{ form.proyecto }}
+            {% if form.proyecto.errors %}
+            <div class="error">{{ form.proyecto.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="campo-consulta">
+            <label for="id_descripcion">Describe tu duda o problema:</label>
+            {{ form.descripcion }}
+            {% if form.descripcion.errors %}
+            <div class="error">{{ form.descripcion.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="campo-consulta">
+            <label for="id_urgencia">¿Qué tan urgente necesitas ayuda?</label>
+            {{ form.urgencia }}
+            {% if form.urgencia.errors %}
+            <div class="error">{{ form.urgencia.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <button type="submit" class="btn-enviar-consulta">
+            <i class="fas fa-question-circle"></i> Enviar Mi Consulta
+        </button>
+        
+        <p class="info-ayuda">
+            <i class="fas fa-info-circle"></i>
+            Te responderemos por email en un plazo máximo de 24-48 horas
+        </p>
+    </form>
+    {% else %}
+    <div class="mensaje-iniciar-sesion">
+        <i class="fas fa-user-lock"></i>
+        <p>Debes <a href="{% url 'login' %}">iniciar sesión</a> para enviar consultas</p>
+    </div>
+    {% endif %}
+</section>
+
+{% endblock %}

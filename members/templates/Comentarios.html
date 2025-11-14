@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Comentarios - Coco_Crochet{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/estilos_Com.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="comentarios">
+        <div class="container">
+            <h1>Comentarios</h1>
+            <h5>¡Exprésate, estamos escuchando!</h5>
+
+            <!-- FORMULARIO PARA NUEVO COMENTARIO -->
+            <div class="nuevo-comentario">
+                <h3>Deja tu comentario</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" value="{{ usuario_actual.nombre }}" readonly class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Comentario:</label>
+                        {{ form.texto }}
+                        {{ form.texto.errors }}
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Publicar Comentario</button>
+                </form>
+            </div>
+
+            <!-- TABLA DE COMENTARIOS EXISTENTES -->
+            <div class="comentarios-lista">
+                <h3>Comentarios de la comunidad</h3>
+                
+                {% if comentarios %}
+                <table class="tabla-comentarios">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Comentario</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comentario in comentarios %}
+                        <tr>
+                            <td class="usuario-col">
+                                <div class="avatar">{{ comentario.usuario.nombre.0|upper }}</div>
+                                {{ comentario.usuario.nombre }}
+                            </td>
+                            <td class="comentario-col">{{ comentario.texto }}</td>
+                            <td class="fecha-col">{{ comentario.fecha_creacion|date:"d/m/Y H:i" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="no-comentarios">Aún no hay comentarios. ¡Sé el primero en comentar!</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
